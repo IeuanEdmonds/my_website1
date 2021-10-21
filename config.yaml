@@ -93,10 +93,10 @@ params:
         subtitle: City of the Gods (and Kostis)
         title: A trip to Athens
         url: blogs/athens
-      - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
-        title: Ipsum
-        url: blogs/ipsum
+      - image: LBS.jpg
+        subtitle: Explore what the school has to offer
+        title: London Business School
+        url: https://www.london.edu/
       - image: pic05.jpg
         subtitle: Ipsum Dolor Sit Amet
         title: Consequat
