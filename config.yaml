@@ -13,11 +13,6 @@ params:
     title: Ieuan Edmonds
   blog: {}
   contact:
-    location: 
-      - city: London, NW1 4SA
-        country: United Kingdom
-        street: Regent's Park
-        title: Address
     buttonClear: Clear
     buttonSend: Send message
     email:
