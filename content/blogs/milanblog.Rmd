@@ -696,7 +696,7 @@ model_prediction <-
          CI_lower = exp(lwr),
          CI_upper = exp(upr)) %>%
   select(-fit, -lwr, -upr)
-model_prediction
+
 ggplot(model_prediction, aes(x = price)) +
   geom_density()+
   labs(title="Price Distribution of Suitable Airbnb", x="Pricing") +
@@ -704,7 +704,7 @@ ggplot(model_prediction, aes(x = price)) +
  
 ```
 
-In the final data frame we can observe the Predicted price and the 95% confidence intervals. The predicted price has been calculated using Model 8 that has an R2 of 0.28. The low R2 is responsible for the large Confidence Intervals values.
+The final chart shows us a density plot of the appropriate properties for the desired 4 day stay, with an average price c.195. 
 
 
 # Acknowledgements
