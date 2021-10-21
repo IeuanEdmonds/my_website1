@@ -1,5 +1,5 @@
 ---
-title: "Exploring the use of Santander Cycles in London"
+title: "GPD components over time and among countries"
 date: "20/10/2021"
 description: ''
 draft: no
@@ -11,99 +11,39 @@ categories:
 - ''
 ---
 
-I gathered the latest data by running the following
+At the risk of oversimplifying things, the main components of gross domestic product, GDP are personal consumption (C), business investment (I), government spending (G) and net exports (exports - imports). You can read more about GDP and the different approaches in calculating at the [Wikipedia GDP page](https://en.wikipedia.org/wiki/Gross_domestic_product).
 
-```{r, get_tfl_data, cache=TRUE}
-url <- "https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx"
+The GDP data we will look at is from the [United Nations' National Accounts Main Aggregates Database](https://unstats.un.org/unsd/snaama/Downloads), which contains estimates of total GDP and its components for all countries from 1970 to today. We will look at how GDP and its components have changed over time, and compare different countries and how much each component contributes to that country's GDP. The file we will work with is [GDP and its breakdown at constant 2010 prices in US Dollars](http://unstats.un.org/unsd/amaapi/api/file/6) and it has already been saved in the Data directory. Have a look at the Excel file to see how it is structured and organised
 
-# Download TFL data to temporary file
-httr::GET(url, write_disk(bike.temp <- tempfile(fileext = ".xlsx")))
 
-# Use read_excel to read it as dataframe
-bike0 <- read_excel(bike.temp,
-                   sheet = "Data",
-                   range = cell_cols("A:B"))
+```{r read_GDP_data}
 
-# change dates to get year, month, and week
-bike <- bike0 %>% 
-  clean_names() %>% 
-  rename (bikes_hired = number_of_bicycle_hires) %>% 
-  mutate (year = year(day),
-          month = lubridate::month(day, label = TRUE),
-          week = isoweek(day))
+UN_GDP_data  <-  read_excel(here::here("data", "Download-GDPconstant-USD-countries.xls"), # Excel filename
+                sheet="Download-GDPconstant-USD-countr", # Sheet name
+                skip=2) # Number of rows to skip
+
+```
+
+ The first thing you need to do is to tidy the data, as it is in wide format and you must make it into long, tidy format. Please express all figures in billions (divide values by `1e9`, or $10^9$), and you want to rename the indicators into something shorter.
+
+
+```{r reshape_GDP_data}
+
+tidy_GDP_data  <-  ?????????????????????????
+
+glimpse(tidy_GDP_data)
+
+
+# Let us compare GDP components for these 3 countries
+country_list <- c("United States","India", "Germany")
+```
+
+First, can you produce this plot?
+
+
+```{r gdp1, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("images", "gdp1.png"), error = FALSE)
 ```
 
 
-Due to the COVID pandemic, most areas were locked down, restricting the outdoor activities for many citizens. Therefore, the demand for hired bikes (sample sizes) decreases for May 2020 and June 2020. However, we observed more extreme values (>= 60K) compared to the previous years. One possible explanation is that due to the social distancing rules, people who have mandatory need of commuting have to choose a safer transportation mean. Therefore, a large number of people are shifting from using public transport like railway to bikes.
-However, the challenge I want you to work on is to reproduce the following two graphs.
-
-```{r,out.width="100%"}
-monthly_bike_total <- bike %>%
-  filter(year >= 2016, year <= 2019) %>%
-  group_by(month) %>%
-  summarize(average_bikes = mean(bikes_hired))
-
-monthly_bike_by_year <- bike %>%
-  filter(year >= 2016, year <= 2021) %>%
-  group_by(year, month) %>%
-  summarize(average_bikes = mean(bikes_hired))
-
-monthly_bike_by_year$total_average = monthly_bike_total$average_bikes[match(monthly_bike_by_year$month, monthly_bike_total$month)]
-
-monthly_bike_by_year <- monthly_bike_by_year %>%
-  mutate(upper_bar = ifelse(average_bikes > total_average, average_bikes - total_average, 0), lower_bar = ifelse(average_bikes < total_average, total_average - average_bikes, 0))
-
-ggplot(monthly_bike_by_year, aes(x = month)) +
-  geom_ribbon(aes(ymin = total_average, ymax = total_average + upper_bar), 
-              fill = "green", alpha = 0.2, group = 1) +
-  geom_ribbon(aes(ymin = total_average - lower_bar, ymax = total_average), 
-              fill = "red", alpha = 0.2, group = 1) +
-  geom_line(aes(y = average_bikes), color = "black",alpha=0.3, group = 1, size = 0.3) +
-  geom_line(aes(y = total_average), color = "blue", group = 1, size = 0.5) +
-  facet_wrap(~ year) +
-  labs(title = "Monthly changes in TfL bike rentals",
-       subtitle = "Change from monthly average shown in blue and calculated between 2016 and 2019",
-       y = "Bike rentals",
-       caption = "Source: TfL, London Data Store") +
-  scale_x_discrete(guide = guide_axis(n.dodge=1)) +
-  theme_minimal() +
-  NULL
-```
-
-The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to Q2 (weeks 14-26) and Q4 (weeks 40-52).
-```{r}
-weekly_bike_total <- bike %>%
-  filter(year >= 2016, year <= 2019) %>%
-  group_by(week) %>%
-  summarize(average_bikes = mean(bikes_hired))
-
-weekly_bike_by_year <- bike %>%
-  filter(year >= 2016, year <= 2021) %>%
-  group_by(year, week) %>%
-  summarize(average_bikes = mean(bikes_hired))
-
-weekly_bike_by_year$total_average = weekly_bike_total$average_bikes[match(weekly_bike_by_year$week, weekly_bike_total$week)]
-
-weekly_bike_by_year <- weekly_bike_by_year %>%
-  mutate(upper_pct = ifelse(average_bikes > total_average, ((average_bikes / total_average) - 1), 0), lower_pct = ifelse(average_bikes < total_average, ((total_average / average_bikes) - 1), 0))
-
-ggplot(weekly_bike_by_year, aes(x = week)) +
-  geom_ribbon(aes(ymin = 0, ymax = 0 + upper_pct), 
-              fill = "green", alpha = 0.2, group = 1) +
-  geom_ribbon(aes(ymin = 0 - lower_pct, ymax = 0), 
-              fill = "red", alpha = 0.2, group = 1) +
-  geom_line(aes(y = upper_pct), color = "black", alpha = 0.3, group = 1, size = 0.1) +
-  geom_line(aes(y = -lower_pct), color = "black", alpha = 0.3, group = 1, size = 0.1) +
-  facet_wrap(~ year) +
-  labs(title = "Weekly changes in TfL bike rentals",
-       subtitle = "Change from Weekly average shown in blue and calculated between 2016 and 2019",
-       y = " ",
-       caption = "Source: TfL, London Data Store") +
-  geom_rug(sides="b",alpha = 1/2, color=ifelse(weekly_bike_by_year$average_bikes > weekly_bike_by_year$total_average, "green", "red"))+
-  scale_y_continuous(labels = scales::percent)+
-  annotate("rect", xmin = 14, xmax = 26, ymin = -1, ymax = 1, fill = "grey", alpha=0.3) +
-  annotate("rect", xmin = 40, xmax = 52,ymin = -1, ymax = 1, fill = "grey",alpha=0.3) +
-  theme_minimal() +
-  scale_x_continuous(breaks=c(13,26,39,53))
-  NULL
-```
+Secondly, recall that GDP is the sum of Household Expenditure (Consumption *C*), Gross Capital Formation (business investment *I*), Government Expenditure (G) and Net Exports (exports - imports). Even though there is an indicator `Gross Domestic Product (GDP)` in your dataframe, I would like you to calculate it given its components discussed above.
