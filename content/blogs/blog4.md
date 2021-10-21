@@ -24,4 +24,4 @@ After finishing high school I decided to take a gap year, which turned into thre
 Once I had spent a year on the superyacht I found that I wasnt being mentally stimulated enough and found myself wanting to go back to education - this led to me completing my undergraduate degree in Finance at Henley Business School. Over this time I really got into finance and started to figure out where my interests and skillset could lie within the industry. I have completed a number of internships which can be seen detailed in my CV section. This interest in finance and the idustry sparked my desire to study at LBS to gain a deeper knowledge in areas that I am truly interested in.
 
 
-((The above photo is of my family and close friends on the first time my sister walked on the beach following a serious snowboarding accident - such a happy day despite the weather!))
+((The above photo is of my family and close friends on the first time my sister (third from right) walked on the beach following a serious snowboarding accident - such a happy day despite the weather!))
