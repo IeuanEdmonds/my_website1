@@ -5,7 +5,7 @@ description: ''
 draft: no
 image: milan.jpg
 keywords: ''
-
+slug: milan
 categories:
 - ''
 - ''

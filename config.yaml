@@ -104,7 +104,7 @@ params:
       - image: pic06.jpg
         subtitle: Predicting the price of a 4 night stay for two
         title: Exploring Airbnb prices in Milan, Italy
-        url: blogs/milanblog
+        url: blogs/milan
   two:
     buttonText: Get Started
     enable: yes
