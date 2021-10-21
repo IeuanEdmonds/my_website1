@@ -1,14 +1,14 @@
 ---
-categories:
-- ""
-- ""
-date: "2017-10-31T21:28:43-05:00"
-description: ""
-draft: false
+title: "A trip to Athens"
+date: "20/10/2021"
+description: ''
+draft: no
 image: open_air.jpg
-keywords: ""
+keywords: ''
 slug: athens
-title: 
+categories:
+- ''
+- ''
 ---
 
 Back in 2019 my boyfriend, Alex (British/Greek), was studying in Athens for a term so I took the opportunity to spend time in the city and explore as much as possible.
