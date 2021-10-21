@@ -97,7 +97,7 @@ params:
         title: Exploring Airbnb prices in Milan, Italy
         url: blogs/milan
       - image: cycles.jpg
-        subtitle: 
+        subtitle: How and when are bikes used
         title: Exploring the use of santander cycles in London
         url: blogs/cycles
   two:
