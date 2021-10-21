@@ -99,7 +99,7 @@ params:
       - image: skyline.jpg
         subtitle: Map of London
         title: Exploring London
-        url: blogs/london_street_map
+        url: blogs/london_street_map.pdf
   two:
     buttonText: Get Started
     enable: yes
