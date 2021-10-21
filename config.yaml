@@ -97,10 +97,6 @@ params:
         subtitle: Explore what the school has to offer
         title: London Business School
         url: https://www.london.edu/
-      - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
-        url: blogs/ipsum
       - image: milan1.jpg
         subtitle: Predicting the price of a 4 night stay for two
         title: Exploring Airbnb prices in Milan, Italy
