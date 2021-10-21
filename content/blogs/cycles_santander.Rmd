@@ -5,7 +5,7 @@ description: ''
 draft: no
 image: london.jpg
 keywords: ''
-slug: cycles_santander
+slug: cycles
 categories:
 - ''
 - ''
