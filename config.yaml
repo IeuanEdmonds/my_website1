@@ -96,10 +96,10 @@ params:
         subtitle: Predicting the price of a 4 night stay for two
         title: Exploring Airbnb prices in Milan, Italy
         url: blogs/milan
-      - image: cycles.jpg
-        subtitle: How and when are bikes used
-        title: Exploring the use of santander cycles in London
-        url: blogs/bikes
+      - image: skyline.jpg
+        subtitle: Map of London
+        title: Exploring London
+        url: blogs/london_street_map
   two:
     buttonText: Get Started
     enable: yes
