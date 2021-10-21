@@ -14,7 +14,7 @@ categories:
 Back in 2019 my boyfriend, Alex (British/Greek), was studying in Athens for a term so I took the opportunity to spend time in the city and explore as much as possible.
 
 From being a tourist up at the Acropolis:
-```{r,cache=TRUE, echo = FALSE}
+```{r,out.width="70%", cache=TRUE, echo = FALSE}
 knitr::include_graphics("/img/temple.jpg", error = FALSE)
 ```
 
@@ -26,16 +26,16 @@ knitr::include_graphics("/img/museum.jpg", error = FALSE)
 
 
 We even went to "the most famous" (a Greek firend, 2018) bouzoukia:
-```{r,cache=TRUE, echo = FALSE}
+```{r,out.width="70%", cache=TRUE, echo = FALSE}
 knitr::include_graphics("/img/bouzoukia.jpg", error = FALSE)
 ```
 
 
 And of course, ate thousands of gyros and stuffed vines:
-```{r,cache=TRUE, echo = FALSE}
+```{r,out.width="70%", cache=TRUE, echo = FALSE}
 knitr::include_graphics("/img/gyros.jpg", error = FALSE)
 ```
 
-```{r,cache=TRUE, echo = FALSE}
+```{r,out.width="70%", cache=TRUE, echo = FALSE}
 knitr::include_graphics("/img/vines.jpg", error = FALSE)
 ```

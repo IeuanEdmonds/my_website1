@@ -101,7 +101,7 @@ params:
         subtitle: Ipsum Dolor Sit Amet
         title: Consequat
         url: blogs/ipsum
-      - image: pic06.jpg
+      - image: milan.1.jpg
         subtitle: Predicting the price of a 4 night stay for two
         title: Exploring Airbnb prices in Milan, Italy
         url: blogs/milan
