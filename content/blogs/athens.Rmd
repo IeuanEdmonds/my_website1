@@ -20,7 +20,7 @@ knitr::include_graphics("/img/temple.jpg", error = FALSE)
 
 
 To spending time in museums:
-```{r,cache=TRUE, echo = FALSE}
+```{r,out.width="70%", cache=TRUE, echo = FALSE}
 knitr::include_graphics("/img/museum.jpg", error = FALSE)
 ```
 
