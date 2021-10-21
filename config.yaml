@@ -99,7 +99,7 @@ params:
       - image: cycles.jpg
         subtitle: How and when are bikes used
         title: Exploring the use of santander cycles in London
-        url: blogs/cycles_santander
+        url: blogs/bikes
   two:
     buttonText: Get Started
     enable: yes
